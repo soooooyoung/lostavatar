@@ -1,0 +1,42 @@
+.app {
+  height: 200vh;
+  .header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 3%;
+    height: 200px;
+    gap: 60px;
+    background-color: #ffffff !important;
+    .rabbit {
+      height: 100%;
+    }
+    .search {
+      min-width: 550px;
+      max-width: 550px;
+      height: 82px;
+      font-size: 18px;
+      border-radius: 60px;
+      border-color: #bcdee8;
+      color: #02314a;
+      padding-left: 42px;
+      padding-right: 42px;
+    }
+    .title {
+      height: 100%;
+      color: #1f1f1f;
+      font-size: 4em;
+      bottom: 0;
+    }
+  }
+  .header-float {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: rgba($color: #ffffff, $alpha: 0.5) !important;
+  }
+  .content {
+    background-color: #aad6e6 !important;
+  }
+}
