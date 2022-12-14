@@ -1,3 +1,4 @@
+import { SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 
 interface Props {
@@ -6,5 +7,19 @@ interface Props {
 }
 
 export const SearchInput = ({ className, style }: Props) => {
-  return <Input className={className} style={style}></Input>;
+  const onClickSearchButton = () => {
+    console.log("cliked");
+  };
+  return (
+    <Input
+      className={className}
+      style={style}
+      suffix={
+        <SearchOutlined
+          style={{ color: "#aad6e6", fontSize: 24 }}
+          onClick={onClickSearchButton}
+        />
+      }
+    ></Input>
+  );
 };

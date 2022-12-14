@@ -5,6 +5,7 @@ import { HomePage } from "./pages";
 import { Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { AppHeader } from "./components/AppHeader";
+import { AppFooter } from "./components/AppFooter";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Content className="content">
         <HomePage />
       </Content>
+      <AppFooter />
     </Layout>
   );
 }
