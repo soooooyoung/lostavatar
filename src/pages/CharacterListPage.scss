@@ -1,0 +1,25 @@
+.character-list {
+  display: flex;
+  padding: 60px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background-color: #ffffff3a;
+    height: 400px;
+    border-radius: 30px;
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      height: 400px;
+      border-radius: 30px;
+      justify-content: space-evenly;
+      h1 {
+        color: #ffffff;
+      }
+    }
+  }
+}

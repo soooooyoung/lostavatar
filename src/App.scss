@@ -1,5 +1,6 @@
 .app {
-  height: 200vh;
+  height: 100%;
+  min-height: 100vh;
   .header {
     display: flex;
     align-items: center;
@@ -10,6 +11,7 @@
     background-color: #ffffff !important;
     .rabbit {
       height: 100%;
+      cursor: pointer;
     }
     .search {
       min-width: 550px;

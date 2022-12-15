@@ -1,5 +1,5 @@
 import "./HomePage.scss";
 
 export const HomePage = () => {
-  return <></>;
+  return <>{/* <Link to="/character-list">fff</Link> */}</>;
 };
