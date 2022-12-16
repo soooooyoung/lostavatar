@@ -1,5 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Input } from "antd";
+import { Input, Switch } from "antd";
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
@@ -8,12 +8,15 @@ interface Props {
   style?: React.CSSProperties;
 }
 
+type SearchType = "character-list" | "character-profile";
+
 export const SearchInput = ({ className, style }: Props) => {
   const [value, setValue] = useState("");
+  const [searchType, setSearchType] = useState<SearchType>("character-list");
   const navigate = useNavigate();
 
   const onClickSearchButton = () => {
-    navigate("character-list", {
+    navigate(searchType, {
       state: {
         characterName: value,
       },
@@ -35,6 +38,15 @@ export const SearchInput = ({ className, style }: Props) => {
             onClick={onClickSearchButton}
           />
         }
+      />
+      <Switch
+        checkedChildren="원정대"
+        unCheckedChildren="캐릭터"
+        onChange={(checked) => {
+          checked
+            ? setSearchType("character-list")
+            : setSearchType("character-profile");
+        }}
       />
     </>
   );

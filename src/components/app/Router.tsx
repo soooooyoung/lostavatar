@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { CharaterListPage, HomePage } from "../../pages";
+import { CharacterListPage, HomePage, CharacterProfilePage } from "../../pages";
 
 export const Router = () => {
   return (
@@ -7,7 +7,12 @@ export const Router = () => {
       <Route path="/" element={<HomePage />} errorElement={<></>} />
       <Route
         path="/character-list"
-        element={<CharaterListPage />}
+        element={<CharacterListPage />}
+        errorElement={<></>}
+      />
+      <Route
+        path="/character-profile"
+        element={<CharacterProfilePage />}
         errorElement={<></>}
       />
     </Routes>

@@ -1,2 +1,3 @@
 export { HomePage } from "./HomePage";
-export { CharaterListPage } from "./CharacterListPage";
+export { CharacterListPage } from "./CharacterListPage";
+export { CharacterProfilePage } from "./CharacterProfilePage";

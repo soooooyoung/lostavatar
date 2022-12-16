@@ -1,5 +1,6 @@
+import { env } from "../config/env";
 import "./HomePage.scss";
 
 export const HomePage = () => {
-  return <>{/* <Link to="/character-list">fff</Link> */}</>;
+  return <>{env.isDevelopment ? "develop" : "prod"}</>;
 };
