@@ -1,23 +1,33 @@
-import { List, Skeleton } from "antd";
+import { List } from "antd";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useFetchCharacters } from "../api/charater";
+import { setTheme } from "../components/app/appSlice";
 import { CharacterCard } from "../components/character/CharaterCard";
+import { useAppDispatch } from "../utils/app/store";
 import "./CharacterListPage.scss";
 
 export const CharacterListPage = () => {
-  const { state } = useLocation();
-
-  const { data, refetch, isLoading } = useFetchCharacters(
-    state?.characterName ?? ""
-  );
+  const dispatch = useAppDispatch();
+  const { name } = useParams();
+  const navigate = useNavigate();
+  const { data, refetch, isLoading } = useFetchCharacters(name ?? "");
 
   useEffect(() => {
-    if (state?.characterName?.replace(/ /g, "") !== undefined) {
+    dispatch(setTheme("default"));
+  });
+  useEffect(() => {
+    if (name?.replace(/ /g, "") !== undefined) {
       refetch();
     }
-  }, [state, refetch]);
+  }, [name, refetch]);
 
+  const onClickCharacter = (characterName: string) => {
+    if (!characterName) {
+      return;
+    }
+    navigate(`/character-profile/${characterName}`);
+  };
   return (
     <div className="character-list">
       <List
@@ -25,8 +35,12 @@ export const CharacterListPage = () => {
         grid={{ gutter: 16, xs: 1, sm: 1, md: 2, lg: 3, xl: 3, xxl: 4 }}
         size="large"
         dataSource={data}
-        renderItem={(item, idx) => (
-          <CharacterCard isLoading={isLoading} character={item} />
+        renderItem={(item) => (
+          <CharacterCard
+            isLoading={isLoading}
+            character={item}
+            onClick={() => onClickCharacter(item.CharacterName)}
+          />
         )}
       />
     </div>

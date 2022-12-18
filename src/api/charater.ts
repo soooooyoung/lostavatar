@@ -16,13 +16,13 @@ export const useFetchCharacters = (
     {
       ...config,
       enabled: false,
+      retry: false,
       onError: (e) => {
         showErrorModal(e);
       },
       onSuccess: (data) => {
         if (Object.keys(data).find((item) => item === "Message")) {
-          //TODO Process ERROR
-          throw new Error();
+          showErrorModal(new Error((data as unknown as ErrorResponse).Message));
         }
         return data as Character[];
       },

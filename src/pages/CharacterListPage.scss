@@ -4,22 +4,56 @@
   .card {
     display: flex;
     flex-direction: column;
-    padding: 24px;
-    background-color: #ffffff3a;
-    height: 400px;
-    border-radius: 30px;
     white-space: nowrap;
     overflow: hidden;
+    position: relative;
+    padding: 24px;
+    background-color: #5353536e;
+    height: 400px;
+    border-radius: 30px;
+    border-color: #ffffff;
+    border-width: 0.5px;
+    border-style: dashed;
+    cursor: pointer;
+
+    img {
+      position: absolute;
+      object-fit: cover;
+      right: 0px;
+      height: 400px;
+      opacity: 0.2;
+      z-index: 0;
+    }
+
     .card-content {
       display: flex;
       flex-direction: column;
-      padding: 24px;
       height: 400px;
+      padding: 24px;
       border-radius: 30px;
       justify-content: space-evenly;
-      h1 {
-        color: #ffffff;
+      color: #ffffff;
+      z-index: 1;
+      .itemLv {
+        font-size: 36px;
+        font-weight: bold;
       }
+      h1 {
+        font-size: 42px;
+      }
+      span {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .card:hover {
+    h1,
+    span {
+      font-weight: bolder;
+    }
+    img {
+      opacity: 0.5;
     }
   }
 }

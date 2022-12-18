@@ -1,8 +1,12 @@
 import { Footer } from "antd/es/layout/layout";
 
-export const AppFooter = () => {
+interface Props {
+  style: React.CSSProperties;
+}
+
+export const AppFooter = ({ style }: Props) => {
   return (
-    <Footer className="footer">
+    <Footer className="footer" style={style}>
       <h1>LOSTAVATAR.GG</h1>
       <span>
         © Copyright 2022 LOSTAVATAR.GG. LOSTAVATAR.GG isn’t endorsed by

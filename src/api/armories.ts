@@ -16,6 +16,7 @@ export const useFetchArmoryProfile = (
     {
       ...config,
       enabled: false,
+      retry: false,
       onError: (e) => {
         showErrorModal(e);
       },

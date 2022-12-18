@@ -6,12 +6,12 @@ export const Router = () => {
     <Routes>
       <Route path="/" element={<HomePage />} errorElement={<></>} />
       <Route
-        path="/character-list"
+        path="/character-list/:name"
         element={<CharacterListPage />}
         errorElement={<></>}
       />
       <Route
-        path="/character-profile"
+        path="/character-profile/:name"
         element={<CharacterProfilePage />}
         errorElement={<></>}
       />

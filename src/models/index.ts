@@ -17,3 +17,10 @@ export type {
   LoaResponse,
   SuccessResponse,
 } from "./loa/response";
+/**
+ * CONSTANTS
+ */
+export { ColorPalettes } from "./constants";
+/**
+ * SHARED
+ */

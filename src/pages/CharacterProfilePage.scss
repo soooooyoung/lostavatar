@@ -1,0 +1,27 @@
+.character-profile {
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+
+  .baseinfo {
+    display: flex;
+    flex-direction: row;
+    padding: 24px;
+    gap: 16px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    img {
+      object-fit: none;
+      width: 350px;
+      height: 650px;
+      border-radius: 30px;
+      object-position: 50% 100%;
+      // background-color: #15181d;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
