@@ -1,25 +1,29 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Input, Switch } from "antd";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Outlet, redirect, useNavigate } from "react-router-dom";
-import { selectCurrentTheme } from "./app/appSlice";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   className?: string;
   style?: React.CSSProperties;
+  color?: string;
 }
 
-type SearchType = "character-list" | "character-profile";
-
-export const SearchInput = ({ className, style }: Props) => {
-  const currentTheme = useSelector(selectCurrentTheme);
+type SecondarySearchType = "character-list" | "character-profile";
+type PrimarySearchType = "character" | "item";
+export const SearchInput = ({ className, style, color }: Props) => {
   const [value, setValue] = useState("");
-  const [searchType, setSearchType] = useState<SearchType>("character-list");
+  const [primarySearchType, setPrimarySearchType] =
+    useState<PrimarySearchType>("character");
+  const [secondarySearchType, setSecondarySearchType] =
+    useState<SecondarySearchType>("character-list");
   const navigate = useNavigate();
 
   const onClickSearchButton = () => {
-    navigate(`${searchType}/${value}`);
+    if (primarySearchType === "item") {
+    } else {
+      navigate(`${secondarySearchType}/${value}`);
+    }
   };
 
   return (
@@ -30,32 +34,54 @@ export const SearchInput = ({ className, style }: Props) => {
           setValue(e.target.value);
         }}
         value={value}
-        className={className}
+        className="search-input"
         style={{
           ...style,
-          borderColor: currentTheme === "#ffffff" ? "#000000" : currentTheme,
+          borderColor: color,
         }}
         onPressEnter={onClickSearchButton}
         suffix={
           <SearchOutlined
             style={{
-              color: currentTheme === "#ffffff" ? "#000000" : currentTheme,
+              color: color,
               fontSize: 24,
             }}
             onClick={onClickSearchButton}
           />
         }
       />
-      <Switch
-        checkedChildren="원정대"
-        unCheckedChildren="캐릭터"
-        onChange={(checked) => {
-          checked
-            ? setSearchType("character-list")
-            : setSearchType("character-profile");
-        }}
-        checked={searchType === "character-list"}
-      />
+      <div className="switches">
+        <Switch
+          style={{
+            backgroundColor: color,
+          }}
+          checkedChildren="원정대"
+          unCheckedChildren="캐릭터"
+          onChange={(checked) => {
+            checked
+              ? setSecondarySearchType("character-list")
+              : setSecondarySearchType("character-profile");
+          }}
+          checked={secondarySearchType === "character-list"}
+          disabled={primarySearchType === "item"}
+        />
+        <Switch
+          style={{
+            backgroundColor: color,
+          }}
+          checkedChildren="사용자"
+          unCheckedChildren="아바타"
+          onChange={(checked) => {
+            if (checked) {
+              setPrimarySearchType("character");
+            } else {
+              setPrimarySearchType("item");
+              setSecondarySearchType("character-profile");
+            }
+          }}
+          checked={primarySearchType === "character"}
+        />
+      </div>
     </>
   );
 };

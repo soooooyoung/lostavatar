@@ -1,18 +1,12 @@
-import { List, Skeleton } from "antd";
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useFetchArmoryProfile } from "../api/armories";
-import { setTheme } from "../components/app/appSlice";
 import { CharacterImage } from "../components/character/CharacterImage";
 import { Tendency } from "../models";
-import { useAppDispatch } from "../utils/app/store";
-
 import "./CharacterProfilePage.scss";
 
 export const CharacterProfilePage = () => {
   const { name } = useParams();
-  const dispatch = useAppDispatch();
-
   const { data, refetch } = useFetchArmoryProfile(name ?? "");
 
   useEffect(() => {
@@ -20,10 +14,6 @@ export const CharacterProfilePage = () => {
       refetch();
     }
   }, [name, refetch]);
-
-  useEffect(() => {
-    dispatch(setTheme("white"));
-  });
 
   return (
     <div className="character-profile">

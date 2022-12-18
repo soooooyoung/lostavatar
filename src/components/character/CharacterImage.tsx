@@ -19,7 +19,7 @@ import blaster from "../../assets/art/characters/blaster.png";
 import holyknight from "../../assets/art/characters/holyknight.png";
 import warrior from "../../assets/art/characters/warrior.png";
 import filler from "../../assets/art/characters/filler.png";
-
+import demo from "../../assets/art/characters/demonic.png";
 interface Props {
   characterClassName?: string;
   characterUrl?: string;
@@ -41,6 +41,7 @@ export const CharacterImage = ({ characterUrl, characterClassName }: Props) => {
     기공사: fighter,
     인파이터: fighter,
     배틀마스터: fighter,
+    암살자: demo,
     리퍼: reaper,
     블레이드: blade,
     데모닉: demonic,
@@ -62,7 +63,7 @@ export const CharacterImage = ({ characterUrl, characterClassName }: Props) => {
   return (
     <img
       src={characterUrl ?? characterImage[characterClassName ?? "default"]}
-      alt=""
+      alt="character_img"
     />
   );
 };

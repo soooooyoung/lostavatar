@@ -4,10 +4,12 @@ import { RootState } from "../../utils/app/rootReducer";
 
 interface AppState {
   theme: string;
+  textColor: string;
 }
 
 const initialState: AppState = {
   theme: ColorPalettes.default,
+  textColor: ColorPalettes.white,
 };
 
 export const appSlice = createSlice({
@@ -20,10 +22,13 @@ export const appSlice = createSlice({
       { payload }: PayloadAction<keyof typeof ColorPalettes>
     ) => {
       state.theme = ColorPalettes[payload];
+      state.textColor = payload === "white" ? "#000000" : "#ffffff";
     },
   },
 });
 
-export const selectCurrentTheme = (state: RootState) => state.app.theme;
+export const selectTheme = (state: RootState) => state.app.theme;
+
+export const selectTextColor = (state: RootState) => state.app.textColor;
 
 export const { setTheme } = appSlice.actions;

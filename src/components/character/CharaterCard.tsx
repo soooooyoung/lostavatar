@@ -1,5 +1,7 @@
 import { List, Skeleton } from "antd";
+import { useSelector } from "react-redux";
 import { Character } from "../../models";
+import { selectTextColor } from "../app/appSlice";
 import { CharacterImage } from "./CharacterImage";
 
 interface Props {
@@ -9,25 +11,25 @@ interface Props {
 }
 
 export const CharacterCard = ({ character, isLoading, onClick }: Props) => {
+  const currentTextColor = useSelector(selectTextColor);
   return (
-    <List.Item className="card" onClick={onClick}>
-      <Skeleton loading={isLoading} active>
-        <div className="card-content">
-          <CharacterImage characterClassName={character.CharacterClassName} />
-          <h1>{character.CharacterName}</h1>
-          <span>
-            ITEM LV <span className="itemLv">{character.ItemAvgLevel}</span>
-          </span>
-          <span>
-            {character.CharacterClassName} LV {character.CharacterLevel} /{" "}
-            {character.ServerName}
-          </span>
-
-          {/* 
-          TODO: DB 캐시
-          <span>좋아요 수 : {}</span> */}
-        </div>
-      </Skeleton>
-    </List.Item>
+    <div
+      className="card-content"
+      style={{
+        color: currentTextColor,
+      }}
+    >
+      <div className="card-img" onClick={onClick}>
+        <CharacterImage characterClassName={character.CharacterClassName} />
+      </div>
+      <h1>{character.CharacterName}</h1>
+      <span>
+        ITEM LV <span className="itemLv">{character.ItemAvgLevel}</span>
+      </span>
+      <span>
+        {character.CharacterClassName} LV {character.CharacterLevel}
+      </span>
+      <span> {character.ServerName}</span>
+    </div>
   );
 };

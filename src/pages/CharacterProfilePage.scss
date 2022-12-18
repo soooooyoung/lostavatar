@@ -1,5 +1,7 @@
 .character-profile {
   padding: 24px;
+  max-width: 1200px;
+  margin: auto;
   display: flex;
   flex-direction: row;
 
@@ -9,7 +11,8 @@
     padding: 24px;
     gap: 16px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
+    background-color: #ffffff;
+    border-radius: 6px;
     img {
       object-fit: none;
       width: 350px;

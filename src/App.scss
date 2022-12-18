@@ -11,13 +11,18 @@
     gap: 60px;
     width: 100%;
     background-color: #ffffff !important;
+    flex-wrap: nowrap;
+    font-size: 32px;
+    span:hover {
+      opacity: 0.5;
+    }
     .rabbit {
       height: 200px;
       object-fit: cover;
       cursor: pointer;
     }
 
-    .search {
+    .search-input {
       min-width: 300px;
       max-width: 550px;
       height: 82px;
@@ -28,11 +33,20 @@
       padding-left: 42px;
       padding-right: 42px;
     }
-    .title {
-      height: 100%;
-      color: #1f1f1f;
-      font-size: 4em;
-      bottom: 0;
+
+    .switches {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .space {
+      flex-grow: 2;
+    }
+    .palette {
+      align-items: center;
+    }
+    .language-setting {
+      cursor: not-allowed;
     }
   }
   .header-float {
@@ -42,8 +56,10 @@
     width: 100%;
     background-color: rgba($color: #ffffff, $alpha: 0.5) !important;
   }
-  .content {
+  .app-content {
+    background-color: transparent;
   }
   .footer {
+    background-color: transparent;
   }
 }
