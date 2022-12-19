@@ -29,7 +29,10 @@ export const CharacterProfilePage = () => {
 
   return (
     <div className="character-profile">
-      <div className="character-title">{data?.CharacterName}</div>
+      <div className="character-title">
+        {data?.Title}
+        <h1>{data?.CharacterName}</h1>
+      </div>
       <Tabs
         className="character-tabs"
         tabPosition="left"

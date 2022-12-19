@@ -20,6 +20,9 @@ export const SearchInput = ({ className, style, color }: Props) => {
   const navigate = useNavigate();
 
   const onClickSearchButton = () => {
+    if (!value) {
+      return;
+    }
     if (primarySearchType === "item") {
     } else {
       navigate(`${secondarySearchType}/${value}`);

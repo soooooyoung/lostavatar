@@ -7,11 +7,11 @@
     align-items: center;
     flex-direction: row;
     padding-left: 3%;
-    height: 200px;
+    min-height: 200px;
     gap: 30px;
     width: 100%;
     background-color: #ffffff !important;
-    flex-wrap: nowrap;
+
     font-size: 26px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     span:hover {
@@ -55,5 +55,21 @@
   }
   .footer {
     background-color: transparent;
+  }
+
+  .nav-bar {
+    display: flex;
+    white-space: nowrap;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    margin: 16px;
+    font-size: 18px;
+    .nav-item {
+      cursor: pointer;
+    }
+  }
+  .space {
+    flex-grow: 2;
   }
 }

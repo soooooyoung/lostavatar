@@ -1,15 +1,25 @@
+import { AppstoreOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { List } from "antd";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFetchCharacters } from "../api/charater";
-
+import { selectTextColor } from "../components/app/appSlice";
 import { CharacterCard } from "../components/character/CharaterCard";
+import {
+  getCharacterFromDataList,
+  getDataListFromServer,
+  getServerListFromData,
+} from "../utils/dataUtils";
 import "./CharacterListPage.scss";
 
 export const CharacterListPage = () => {
-  const { name } = useParams();
   const navigate = useNavigate();
+  const { name } = useParams();
+  const currentTextColor = useSelector(selectTextColor);
   const { data, refetch, isLoading } = useFetchCharacters(name ?? "");
+  const [server, SetServer] = useState<string>("all");
+  const [listMode, setListMode] = useState<boolean>(false);
 
   useEffect(() => {
     if (name?.replace(/ /g, "") !== undefined) {
@@ -23,10 +33,52 @@ export const CharacterListPage = () => {
     }
     navigate(`/character-profile/${characterName}`);
   };
+
+  const onClickMenuItem = (item: string) => {
+    SetServer(item);
+  };
+  const character = getCharacterFromDataList(data, name);
+
   return (
     <div className="character-list">
+      {character ? (
+        <div className="single card">
+          <CharacterCard
+            character={character}
+            onClick={() => onClickCharacter(character.CharacterName)}
+          />
+        </div>
+      ) : (
+        ""
+      )}
+      {/* TODO: nav bar to custom components and unite theme */}
+      <div className="nav-bar" style={{ color: currentTextColor, height: 80 }}>
+        <div
+          className="nav-item"
+          style={{ fontWeight: server === "all" ? "bold" : "normal" }}
+          onClick={() => onClickMenuItem("all")}
+        >
+          전체
+        </div>
+        {getServerListFromData(data)?.map((item, idx) => (
+          <div
+            className="nav-item"
+            style={{ fontWeight: server === item ? "bold" : "normal" }}
+            onClick={() => onClickMenuItem(item)}
+          >
+            {item}
+          </div>
+        ))}
+        <div className="space"></div>
+        <div className="nav-item">
+          {listMode ? (
+            <AppstoreOutlined onClick={() => setListMode(false)} />
+          ) : (
+            <UnorderedListOutlined onClick={() => setListMode(true)} />
+          )}
+        </div>
+      </div>
       <List
-        className="rank-list"
         grid={{
           gutter: 16,
           xs: 1,
@@ -36,26 +88,18 @@ export const CharacterListPage = () => {
           xl: 3,
           xxl: 3,
         }}
-        dataSource={data ?? []}
+        dataSource={getDataListFromServer(data ?? [], server)}
         itemLayout="horizontal"
         loading={isLoading}
         renderItem={(item) => (
-          <List.Item className="card">
-            <CharacterCard
-              character={item}
-              onClick={() => onClickCharacter(item.CharacterName)}
-            />
+          <List.Item
+            className={listMode ? "list" : "card"}
+            onClick={() => onClickCharacter(item.CharacterName)}
+          >
+            <CharacterCard listMode={listMode} character={item} />
           </List.Item>
         )}
       />
-
-      {/* {data?.map((item) => (
-        <CharacterCard
-          isLoading={isLoading}
-          character={item}
-          onClick={() => onClickCharacter(item.CharacterName)}
-        />
-      ))} */}
     </div>
   );
 };
