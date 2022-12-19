@@ -80,6 +80,7 @@ export const SearchInput = ({ className, style, color }: Props) => {
             }
           }}
           checked={primarySearchType === "character"}
+          disabled
         />
       </div>
     </>

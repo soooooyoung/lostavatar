@@ -8,8 +8,8 @@ interface AppState {
 }
 
 const initialState: AppState = {
-  theme: ColorPalettes.default,
-  textColor: ColorPalettes.white,
+  theme: ColorPalettes.white,
+  textColor: ColorPalettes.black,
 };
 
 export const appSlice = createSlice({
@@ -22,7 +22,8 @@ export const appSlice = createSlice({
       { payload }: PayloadAction<keyof typeof ColorPalettes>
     ) => {
       state.theme = ColorPalettes[payload];
-      state.textColor = payload === "white" ? "#000000" : "#ffffff";
+      state.textColor =
+        ColorPalettes[payload] === "#ffffff" ? "#000000" : "#ffffff";
     },
   },
 });

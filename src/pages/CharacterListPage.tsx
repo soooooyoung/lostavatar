@@ -36,12 +36,12 @@ export const CharacterListPage = () => {
           xl: 3,
           xxl: 3,
         }}
-        dataSource={data}
+        dataSource={data ?? []}
         itemLayout="horizontal"
+        loading={isLoading}
         renderItem={(item) => (
           <List.Item className="card">
             <CharacterCard
-              isLoading={isLoading}
               character={item}
               onClick={() => onClickCharacter(item.CharacterName)}
             />

@@ -21,9 +21,6 @@ export const useFetchCharacters = (
         showErrorModal(e);
       },
       onSuccess: (data) => {
-        if (Object.keys(data).find((item) => item === "Message")) {
-          showErrorModal(new Error((data as unknown as ErrorResponse).Message));
-        }
         return data as Character[];
       },
     }

@@ -1,4 +1,3 @@
-import { List, Skeleton } from "antd";
 import { useSelector } from "react-redux";
 import { Character } from "../../models";
 import { selectTextColor } from "../app/appSlice";
@@ -7,10 +6,9 @@ import { CharacterImage } from "./CharacterImage";
 interface Props {
   onClick?: () => void;
   character: Character;
-  isLoading?: boolean;
 }
 
-export const CharacterCard = ({ character, isLoading, onClick }: Props) => {
+export const CharacterCard = ({ character, onClick }: Props) => {
   const currentTextColor = useSelector(selectTextColor);
   return (
     <div

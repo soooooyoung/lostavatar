@@ -21,10 +21,8 @@ export const useFetchArmoryProfile = (
         showErrorModal(e);
       },
       onSuccess: (data) => {
-        if (Object.keys(data).find((item) => item === "Message")) {
-          //TODO Process ERROR
-          throw new Error();
-        }
+        //TODO Process ERROR
+
         return data as ArmoryProfile;
       },
     }

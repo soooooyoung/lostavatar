@@ -48,11 +48,10 @@ export const AppHeader = () => {
             color={currentColor}
             placement="bottomRight"
           >
-            <GlobalOutlined style={{ color: currentColor }} disabled />{" "}
+            <GlobalOutlined style={{ color: currentColor }} disabled />
           </Tooltip>
         </div>
       </Header>
-      <Header className="header-float"></Header>
     </Fragment>
   );
 };

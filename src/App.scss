@@ -8,11 +8,12 @@
     flex-direction: row;
     padding-left: 3%;
     height: 200px;
-    gap: 60px;
+    gap: 30px;
     width: 100%;
     background-color: #ffffff !important;
     flex-wrap: nowrap;
-    font-size: 32px;
+    font-size: 26px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     span:hover {
       opacity: 0.5;
     }
@@ -28,7 +29,6 @@
       height: 82px;
       font-size: 18px;
       border-radius: 60px;
-      border-color: #bcdee8;
       color: #02314a;
       padding-left: 42px;
       padding-right: 42px;
@@ -49,13 +49,7 @@
       cursor: not-allowed;
     }
   }
-  .header-float {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    background-color: rgba($color: #ffffff, $alpha: 0.5) !important;
-  }
+
   .app-content {
     background-color: transparent;
   }
