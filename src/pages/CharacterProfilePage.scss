@@ -53,10 +53,11 @@
           gap: 16px;
           .title {
             width: 200px;
-            padding: 5px 26px 5px 10px;
+            padding: 5px 26px 5px 20px;
             margin-right: 10px;
-            border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
+
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
             background: linear-gradient(
               270deg,
               rgba(41, 41, 41, 0) 0%,

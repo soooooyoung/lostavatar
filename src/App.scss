@@ -19,6 +19,7 @@
     }
     .rabbit {
       height: 200px;
+
       object-fit: cover;
       cursor: pointer;
     }
@@ -72,4 +73,7 @@
   .space {
     flex-grow: 2;
   }
+  // img {
+  //   pointer-events: none;
+  // }
 }

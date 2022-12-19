@@ -1,7 +1,9 @@
 import { Carousel } from "antd";
 import { env } from "../config/env";
-
+import pirate from "../assets/art/characters/pirate.png";
 import "./HomePage.scss";
+import { useSelector } from "react-redux";
+import { selectTextColor } from "../components/app/appSlice";
 const contentStyle: React.CSSProperties = {
   height: "160px",
   color: "#fff",
@@ -10,9 +12,16 @@ const contentStyle: React.CSSProperties = {
   background: "#364d79",
 };
 export const HomePage = () => {
+  const color = useSelector(selectTextColor);
   return (
     <div className="home">
-      <Carousel autoplay>
+      <div className="banner">
+        <img src={pirate} alt="" />
+        <span style={{ color }}>
+          Site under construction. Please Check Back Later!
+        </span>
+      </div>
+      {/* <Carousel autoplay>
         <div>
           <h3 style={contentStyle}>광고</h3>
         </div>
@@ -25,7 +34,7 @@ export const HomePage = () => {
         <div>
           <h3 style={contentStyle}>광고</h3>
         </div>
-      </Carousel>
+      </Carousel> */}
     </div>
   );
 };

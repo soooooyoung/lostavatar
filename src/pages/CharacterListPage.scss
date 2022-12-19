@@ -16,8 +16,8 @@
     cursor: pointer;
     background: linear-gradient(
       270deg,
-      rgba(246, 246, 246, 0.292) 0%,
-      rgba(180, 180, 180, 0.177) 46%,
+      rgba(246, 246, 246, 0.6) 0%,
+      rgba(180, 180, 180, 0.3) 46%,
       rgba(0, 0, 0, 0.027) 100%
     );
     .card-content {
@@ -29,6 +29,9 @@
       padding-bottom: 16px;
       .card-title {
         font-weight: bold;
+        text-overflow: ellipsis;
+
+        overflow: hidden;
       }
       img {
         position: absolute;

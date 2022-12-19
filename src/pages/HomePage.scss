@@ -1,0 +1,14 @@
+.home {
+  max-width: 1200px;
+  margin: auto;
+  .banner {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    span {
+      font-size: 42px;
+      padding: 10px;
+    }
+  }
+}
