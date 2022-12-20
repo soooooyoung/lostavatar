@@ -43,7 +43,7 @@ export const AppHeader = () => {
         <div className="language-setting">
           <Tooltip
             title={
-              "Site Currently under construction. English Translation will be available after completion."
+              "Translation currently disabled. It will be available after official site launch."
             }
             color={currentColor}
             placement="bottomRight"

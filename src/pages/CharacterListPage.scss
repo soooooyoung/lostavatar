@@ -25,8 +25,7 @@
       white-space: nowrap;
       color: #ffffff;
       gap: 10px;
-      padding-top: 16px;
-      padding-bottom: 16px;
+
       .card-title {
         font-weight: bold;
         text-overflow: ellipsis;
@@ -92,7 +91,7 @@
   }
 
   .single {
-    padding: 24px;
+    padding: 0px 0px 0px 24px;
     margin-bottom: 16px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
