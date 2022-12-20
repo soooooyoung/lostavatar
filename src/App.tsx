@@ -18,22 +18,29 @@ function App() {
         },
       }}
     >
-      <Layout
-        className="app"
+      <div
+        className="container"
         style={{
           backgroundColor: currentTheme,
         }}
       >
-        <AppHeader />
-        <Content className="app-content">
-          <Router />
-        </Content>
-        <AppFooter
+        <Layout
+          className="app"
           style={{
-            color: useSelector(selectTextColor),
+            backgroundColor: currentTheme,
           }}
-        />
-      </Layout>
+        >
+          <AppHeader />
+          <Content className="app-content">
+            <Router />
+          </Content>
+          <AppFooter
+            style={{
+              color: useSelector(selectTextColor),
+            }}
+          />
+        </Layout>{" "}
+      </div>
     </ConfigProvider>
   );
 }

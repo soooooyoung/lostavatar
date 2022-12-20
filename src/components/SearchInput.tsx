@@ -3,7 +3,7 @@ import {
   CaretUpOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Dropdown, Input, MenuProps, Select, Switch } from "antd";
+import { Input, Switch } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ interface Props {
 
 type SecondarySearchType = "character-list" | "character-profile";
 type PrimarySearchType = "User" | "Item";
-export const SearchInput = ({ className, style, color }: Props) => {
+export const SearchInput = ({ style, color }: Props) => {
   const [value, setValue] = useState("");
   const [searchTypeVisible, setSearchTypeVisible] = useState<
     "visible" | "hidden"
@@ -51,7 +51,7 @@ export const SearchInput = ({ className, style, color }: Props) => {
         className="search-input"
         style={{
           ...style,
-          borderColor: color,
+          borderColor: color === "#ffffff" ? "#000000" : color,
           boxShadow: "none",
         }}
         onPressEnter={onClickSearchButton}
@@ -91,7 +91,7 @@ export const SearchInput = ({ className, style, color }: Props) => {
         suffix={
           <SearchOutlined
             style={{
-              color: color,
+              color: color === "#ffffff" ? "#000000" : color,
               fontSize: 24,
             }}
             onClick={onClickSearchButton}
@@ -101,10 +101,10 @@ export const SearchInput = ({ className, style, color }: Props) => {
       <div className="switches">
         <Switch
           style={{
-            backgroundColor: color,
+            backgroundColor: color === "#ffffff" ? "#000000" : "#ffffff",
           }}
-          checkedChildren="원정대"
-          unCheckedChildren="캐릭터"
+          checkedChildren={<span style={{ color }}>원정대</span>}
+          unCheckedChildren={<span style={{ color }}>캐릭터</span>}
           onChange={(checked) => {
             checked
               ? setSecondarySearchType("character-list")
@@ -113,23 +113,6 @@ export const SearchInput = ({ className, style, color }: Props) => {
           checked={secondarySearchType === "character-list"}
           disabled={primarySearchType === "Item"}
         />
-        {/* <Switch
-          style={{
-            backgroundColor: color,
-          }}
-          checkedChildren="사용자"
-          unCheckedChildren="아바타"
-          onChange={(checked) => {
-            if (checked) {
-              setPrimarySearchType("character");
-            } else {
-              setPrimarySearchType("item");
-              setSecondarySearchType("character-profile");
-            }
-          }}
-          checked={primarySearchType === "character"}
-          disabled
-        /> */}
       </div>
     </>
   );

@@ -10,13 +10,14 @@ import {
 import { useAppDispatch } from "../../utils/app/store";
 import { Dropdown, MenuProps, Tooltip } from "antd";
 import { ColorPalettes } from "../../models";
-import { selectTheme, setTheme } from "./appSlice";
+import { selectTextColor, selectTheme, setTheme } from "./appSlice";
 import { useSelector } from "react-redux";
 
 export const AppHeader = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentTheme = useSelector(selectTheme);
+  const currentText = useSelector(selectTextColor);
   const currentColor = currentTheme === "#ffffff" ? "#000000" : currentTheme;
   const [menuVisible, setMenuVisible] = useState<"visible" | "hidden">(
     "hidden"
@@ -48,11 +49,17 @@ export const AppHeader = () => {
   };
   return (
     <Fragment>
-      <Header className="header">
+      <Header
+        className="header"
+        style={{
+          backgroundColor: currentTheme,
+          color: currentText,
+        }}
+      >
         <div className="header-title" onClick={onClickBunny}>
-          <span style={{ color: currentColor }}>LOSTAVATAR.GG</span>
+          <span style={{ color: currentText }}>LOSTAVATAR.GG</span>
         </div>
-        <SearchInput className="search" color={currentColor} />
+        <SearchInput className="search" color={currentTheme} />
         <div className="menu">{menuItems}</div>
         <div className="space" />
         <div className="hamburger">
@@ -66,7 +73,7 @@ export const AppHeader = () => {
         </div>
         <div className="palette">
           <Dropdown menu={{ items }} trigger={["click"]}>
-            <BgColorsOutlined style={{ color: currentColor }} />
+            <BgColorsOutlined />
           </Dropdown>
         </div>
         <div className="language-setting">
@@ -77,10 +84,11 @@ export const AppHeader = () => {
             color={currentColor}
             placement="bottomRight"
           >
-            <GlobalOutlined style={{ color: currentColor }} disabled />
+            <GlobalOutlined disabled />
           </Tooltip>
         </div>
       </Header>
+      <Header className="topper" hidden></Header>
     </Fragment>
   );
 };
