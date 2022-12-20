@@ -1,64 +1,27 @@
 /**
 * COMMON 
 **/
+:root {
+  --header-height: 110px;
+}
+
 .app {
   margin: auto;
   height: 100%;
-  min-height: 100vh;
+  min-height: 200vh;
   overflow: hidden;
+  padding-top: var(--header-height);
   max-width: 1920px;
   .header {
-    border-radius: 0px 0px 16px 16px;
     display: flex;
     align-items: center;
     flex-direction: row;
-    min-height: 140px;
+    height: var(--header-height);
     gap: 16px;
     font-size: 16px;
-
-    .search-input {
-      min-width: 270px;
-      max-width: 550px;
-      height: 56px;
-      font-size: 18px;
-      border-radius: 60px;
-      color: #02314a;
-      padding-left: 42px;
-      padding-right: 42px;
-      .search-type {
-        font-size: 14px;
-        color: #4f4f4f;
-        font-weight: bold;
-
-        padding-right: 16px;
-        margin-right: 16px;
-        display: flex;
-        gap: 16px;
-      }
-      .search-dropdown {
-        border-radius: 0px 0px 8px 8px;
-        border-radius: 8px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 6px 12px -3px;
-        background-color: #ffffff;
-        position: absolute;
-        top: 50px;
-        left: 26px;
-        width: 80px;
-        display: flex;
-        flex-direction: column;
-        span {
-          padding: 12px 16px;
-          color: #4f4f4f;
-          font-size: 14px;
-        }
-        span:not(:last-child) {
-          border-bottom-style: solid;
-          border-bottom-width: 1px;
-          border-color: rgb(223, 223, 223);
-        }
-      }
-    }
-
+    position: absolute;
+    transition-duration: 200ms;
+    width: 100%;
     .switches {
       display: flex;
       flex-direction: column;
@@ -70,6 +33,17 @@
       flex-grow: 2;
     }
   }
+  .stickyheader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition-duration: 200ms;
+    display: flex;
+
+    .switches {
+      display: none;
+    }
+  }
   .footer {
     background-color: transparent;
   }
@@ -78,10 +52,24 @@
 /**
 * RESPONSIVE 
 **/
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   .app {
     .header {
       flex-wrap: wrap;
+      padding: 16px !important;
+      .search-input {
+        flex-grow: 2;
+      }
+      .space {
+        order: 2;
+      }
+      .switches,
+      .hamburger {
+        order: 3;
+      }
+      .hamburger {
+        margin-right: 16px;
+      }
     }
   }
 }

@@ -1,14 +1,15 @@
 import { Layout, ConfigProvider } from "antd";
+import { useSelector } from "react-redux";
 import { Content } from "antd/es/layout/layout";
 import { AppHeader } from "./components/app/AppHeader";
 import { AppFooter } from "./components/app/AppFooter";
 import { Router } from "./components/app/Router";
-import "./App.scss";
-import { useSelector } from "react-redux";
 import { selectTextColor, selectTheme } from "./components/app/appSlice";
+import "./App.scss";
 
 function App() {
   const currentTheme = useSelector(selectTheme);
+
   return (
     <ConfigProvider
       theme={{
@@ -39,7 +40,7 @@ function App() {
               color: useSelector(selectTextColor),
             }}
           />
-        </Layout>{" "}
+        </Layout>
       </div>
     </ConfigProvider>
   );

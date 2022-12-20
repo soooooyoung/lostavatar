@@ -6,16 +6,17 @@ import {
 import { Input, Switch } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./SearchInput.scss";
 interface Props {
   className?: string;
   style?: React.CSSProperties;
   color?: string;
+  onSearch?: () => void;
 }
 
 type SecondarySearchType = "character-list" | "character-profile";
 type PrimarySearchType = "User" | "Item";
-export const SearchInput = ({ style, color }: Props) => {
+export const SearchInput = ({ style, color, onSearch }: Props) => {
   const [value, setValue] = useState("");
   const [searchTypeVisible, setSearchTypeVisible] = useState<
     "visible" | "hidden"
@@ -29,6 +30,10 @@ export const SearchInput = ({ style, color }: Props) => {
   const onClickSearchButton = () => {
     if (!value) {
       return;
+    }
+    if (onSearch) {
+      setValue("");
+      onSearch();
     }
     if (primarySearchType === "Item") {
     } else {
