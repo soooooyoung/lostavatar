@@ -62,6 +62,7 @@ export const CharacterListPage = () => {
         </div>
         {getServerListFromData(data)?.map((item, idx) => (
           <div
+            key={idx}
             className="nav-item"
             style={{ fontWeight: server === item ? "bold" : "normal" }}
             onClick={() => onClickMenuItem(item)}

@@ -1,79 +1,189 @@
+/**
+* COMMON 
+**/
 .app {
   height: 100%;
   min-height: 100vh;
-
+  overflow: hidden;
   .header {
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding-left: 3%;
-    min-height: 200px;
-    gap: 30px;
-    width: 100%;
+    min-height: 140px;
+    gap: 16px;
+
     background-color: #ffffff !important;
-
-    font-size: 26px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    span:hover {
-      opacity: 0.5;
-    }
-    .rabbit {
-      height: 200px;
-
-      object-fit: cover;
-      cursor: pointer;
-    }
+    font-size: 16px;
 
     .search-input {
-      min-width: 300px;
+      min-width: 270px;
       max-width: 550px;
-      height: 82px;
+      height: 56px;
       font-size: 18px;
       border-radius: 60px;
       color: #02314a;
       padding-left: 42px;
       padding-right: 42px;
+      .search-type {
+        font-size: 14px;
+        color: #4f4f4f;
+        font-weight: bold;
+
+        padding-right: 16px;
+        margin-right: 16px;
+        display: flex;
+        gap: 16px;
+      }
+      .search-dropdown {
+        border-radius: 0px 0px 8px 8px;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 6px 12px -3px;
+        background-color: #ffffff;
+        position: absolute;
+        top: 50px;
+        left: 26px;
+        width: 80px;
+        display: flex;
+        flex-direction: column;
+        span {
+          padding: 12px 16px;
+          color: #4f4f4f;
+          font-size: 14px;
+        }
+        span:not(:last-child) {
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+          border-color: rgb(223, 223, 223);
+        }
+      }
     }
 
     .switches {
       display: flex;
       flex-direction: column;
+      min-width: 76px;
       gap: 16px;
     }
+
     .space {
       flex-grow: 2;
     }
-    .palette {
-      align-items: center;
-    }
-    .language-setting {
-      cursor: not-allowed;
-    }
-  }
-
-  .app-content {
-    background-color: transparent;
   }
   .footer {
     background-color: transparent;
   }
-
-  .nav-bar {
-    display: flex;
-    white-space: nowrap;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-    margin: 16px;
-    font-size: 18px;
-    .nav-item {
-      cursor: pointer;
+}
+/**
+* RESPONSIVE 
+**/
+@media only screen and (max-width: 400px) {
+  .app {
+    .header {
+      flex-wrap: wrap;
     }
   }
-  .space {
-    flex-grow: 2;
+}
+
+@media only screen and (max-width: 767px) {
+  .app {
+    .header {
+      justify-content: space-around;
+
+      .search-input {
+        justify-content: space-between;
+      }
+      .palette {
+        display: none;
+      }
+      .language-setting {
+        display: none;
+      }
+    }
   }
-  // img {
-  //   pointer-events: none;
-  // }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media only screen and (max-width: 1024px) {
+  .app {
+    .header {
+      .header-title {
+        display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .app {
+    .header {
+      .header-title {
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 21px;
+        margin-right: 2%;
+      }
+      .palette {
+        font-size: 18px;
+        align-items: center;
+      }
+      .language-setting {
+        font-size: 16px;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1439px) {
+}
+@media only screen and (max-width: 1439px) {
+  .app {
+    .header {
+      .menu {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+        .hamburger-dropdown {
+          position: absolute;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .app {
+    .header {
+      .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        white-space: nowrap;
+        flex-grow: 2;
+        font-weight: bold;
+        div {
+          min-width: 65px;
+        }
+      }
+      .hamburger {
+        display: none;
+      }
+    }
+    .nav-bar {
+      display: flex;
+      white-space: nowrap;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      margin: 16px;
+      font-size: 18px;
+      .nav-item {
+        cursor: pointer;
+      }
+    }
+    .space {
+      flex-grow: 2;
+    }
+  }
 }

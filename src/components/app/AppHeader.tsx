@@ -1,13 +1,16 @@
 import { Header } from "antd/es/layout/layout";
 import { useNavigate } from "react-router-dom";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { SearchInput } from "../SearchInput";
-import { BgColorsOutlined, GlobalOutlined } from "@ant-design/icons";
+import {
+  BgColorsOutlined,
+  GlobalOutlined,
+  MenuOutlined,
+} from "@ant-design/icons";
 import { useAppDispatch } from "../../utils/app/store";
-import { Dropdown, MenuProps, Space, Tooltip } from "antd";
+import { Dropdown, MenuProps, Tooltip } from "antd";
 import { ColorPalettes } from "../../models";
 import { selectTheme, setTheme } from "./appSlice";
-import demo from "../../assets/art/characters/demonic.png";
 import { useSelector } from "react-redux";
 
 export const AppHeader = () => {
@@ -15,6 +18,20 @@ export const AppHeader = () => {
   const dispatch = useAppDispatch();
   const currentTheme = useSelector(selectTheme);
   const currentColor = currentTheme === "#ffffff" ? "#000000" : currentTheme;
+  const [menuVisible, setMenuVisible] = useState<"visible" | "hidden">(
+    "hidden"
+  );
+  const menuItems = [
+    <div>
+      <span>거래소</span>
+    </div>,
+    <div>
+      <span>거래소</span>
+    </div>,
+    <div>
+      <span>거래소</span>
+    </div>,
+  ];
   const items: MenuProps["items"] = Object.entries(ColorPalettes).map(
     ([key, value], idx) => ({
       key: idx,
@@ -32,9 +49,21 @@ export const AppHeader = () => {
   return (
     <Fragment>
       <Header className="header">
-        <img onClick={onClickBunny} className="rabbit" src={demo} alt="" />
+        <div className="header-title" onClick={onClickBunny}>
+          <span style={{ color: currentColor }}>LOSTAVATAR.GG</span>
+        </div>
         <SearchInput className="search" color={currentColor} />
+        <div className="menu">{menuItems}</div>
         <div className="space" />
+        <div className="hamburger">
+          <MenuOutlined />
+          <div
+            className="hamburger-dropdown"
+            style={{ visibility: menuVisible }}
+          >
+            {menuItems}
+          </div>
+        </div>
         <div className="palette">
           <Dropdown menu={{ items }} trigger={["click"]}>
             <BgColorsOutlined style={{ color: currentColor }} />
