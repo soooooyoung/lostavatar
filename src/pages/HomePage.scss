@@ -1,15 +1,117 @@
 .home {
-  max-width: 1200px;
   margin: auto;
+  padding: 72px 0 0;
+  max-width: 1200px;
 
-  .banner {
-    margin-top: 60px;
+  .section-main {
+    position: absolute;
+    margin: auto;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    span {
-      font-size: 42px;
-      padding: 10px;
+
+    justify-content: space-between;
+    height: 100%;
+  }
+  .wrap-widget {
+    transition-duration: 200ms;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    .widget {
+      background-color: #ffffff;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      border-radius: 14px;
+      padding: 16px;
+    }
+  }
+
+  .wrap-widget:first-child {
+    .widget:first-child {
+      position: sticky;
+      position: -webkit-sticky;
+      align-self: flex-start;
+      top: var(--header-height);
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .home {
+    height: 250vh;
+    .section-main {
+      top: 200px;
+    }
+  }
+}
+
+@media only screen and (min-width: 451px) {
+  .section-main {
+    top: var(--header-height);
+  }
+}
+@media only screen and (min-width: 451px) and (max-width: 767px) {
+  .home {
+    height: 150vh;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .home {
+    .section-main {
+      flex-direction: column;
+    }
+    .wrap-widget {
+      .widget {
+        max-height: 300px;
+        overflow: hidden;
+        border-style: solid;
+        border-width: 6px;
+        border-color: #ffffff;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1185px) {
+  .home {
+    height: 150vh;
+    .wrap-widget {
+      max-width: 838px;
+    }
+    .wrap-widget:last-child {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      min-width: 327px;
+      max-width: 327px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1186px) and (max-width: 1439px) {
+  .home {
+    height: 140vh;
+    .wrap-widget {
+      max-width: 838px;
+    }
+    .wrap-widget:last-child {
+      min-width: 327px;
+      max-width: 327px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .home {
+    height: 130vh;
+    .wrap-widget {
+      min-width: 511px;
+      max-width: 611px;
+    }
+    .wrap-widget:last-child {
+      flex-direction: row;
+      .widget {
+        min-width: 280px;
+        max-width: 280px;
+      }
     }
   }
 }

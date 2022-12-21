@@ -70,7 +70,7 @@ export const AppHeader = () => {
 
   return (
     <Fragment>
-      <Header
+      <div
         className="header"
         style={{
           backgroundColor: currentTheme,
@@ -109,7 +109,7 @@ export const AppHeader = () => {
             <GlobalOutlined disabled />
           </Tooltip>
         </div>
-      </Header>
+      </div>
       <div
         className="stickyheader"
         style={{

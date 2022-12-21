@@ -22,14 +22,12 @@
 
   .character-tabs {
     width: 100%;
-
     img {
       object-fit: none;
       width: 350px;
       height: 650px;
       border-radius: 8px;
       object-position: 50% 100%;
-      // background-color: #15181d;
     }
     .profile-content {
       justify-content: space-between;
