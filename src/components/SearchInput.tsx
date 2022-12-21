@@ -14,17 +14,17 @@ interface Props {
   onSearch?: () => void;
 }
 
-type SecondarySearchType = "character-list" | "character-profile";
-type PrimarySearchType = "User" | "Item";
+type SearchType = "User" | "Item";
 export const SearchInput = ({ style, color, onSearch }: Props) => {
   const [value, setValue] = useState("");
   const [searchTypeVisible, setSearchTypeVisible] = useState<
     "visible" | "hidden"
   >("hidden");
-  const [primarySearchType, setPrimarySearchType] =
-    useState<PrimarySearchType>("User");
-  const [secondarySearchType, setSecondarySearchType] =
-    useState<SecondarySearchType>("character-list");
+  const [searchType, setSearchType] = useState<SearchType>("User");
+  // const [primarySearchType, setPrimarySearchType] =
+  //   useState<PrimarySearchType>("User");
+  // const [secondarySearchType, setSecondarySearchType] =
+  //   useState<SecondarySearchType>("User");
   const navigate = useNavigate();
 
   const onClickSearchButton = () => {
@@ -35,9 +35,9 @@ export const SearchInput = ({ style, color, onSearch }: Props) => {
       setValue("");
       onSearch();
     }
-    if (primarySearchType === "Item") {
+    if (searchType === "Item") {
     } else {
-      navigate(`${secondarySearchType}/${value}`);
+      navigate(`character-list/${value}`);
     }
   };
 
@@ -63,7 +63,7 @@ export const SearchInput = ({ style, color, onSearch }: Props) => {
         prefix={
           <>
             <div className="search-type" onClick={onToggleSearchTypeVisible}>
-              {primarySearchType}
+              {searchType}
               {searchTypeVisible === "hidden" ? (
                 <CaretDownOutlined />
               ) : (
@@ -76,7 +76,7 @@ export const SearchInput = ({ style, color, onSearch }: Props) => {
             >
               <span
                 onClick={() => {
-                  setPrimarySearchType("User");
+                  setSearchType("User");
                   onToggleSearchTypeVisible();
                 }}
               >
@@ -84,7 +84,7 @@ export const SearchInput = ({ style, color, onSearch }: Props) => {
               </span>
               <span
                 onClick={() => {
-                  setPrimarySearchType("Item");
+                  setSearchType("Item");
                   onToggleSearchTypeVisible();
                 }}
               >
@@ -103,7 +103,7 @@ export const SearchInput = ({ style, color, onSearch }: Props) => {
           />
         }
       />
-      <div className="switches">
+      {/* <div className="switches">
         <Switch
           style={{
             backgroundColor: color === "#ffffff" ? "#000000" : "#ffffff",
@@ -112,13 +112,13 @@ export const SearchInput = ({ style, color, onSearch }: Props) => {
           unCheckedChildren={<span style={{ color }}>캐릭터</span>}
           onChange={(checked) => {
             checked
-              ? setSecondarySearchType("character-list")
+              ? setSecondarySearchType("User")
               : setSecondarySearchType("character-profile");
           }}
-          checked={secondarySearchType === "character-list"}
+          checked={secondarySearchType === "User"}
           disabled={primarySearchType === "Item"}
         />
-      </div>
+      </div> */}
     </>
   );
 };

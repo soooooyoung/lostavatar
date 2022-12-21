@@ -41,6 +41,15 @@ export const CharacterListPage = () => {
 
   return (
     <div className="character-list">
+      <div className="character-service">
+        <div className="view-service">
+          {listMode ? (
+            <AppstoreOutlined onClick={() => setListMode(false)} />
+          ) : (
+            <UnorderedListOutlined onClick={() => setListMode(true)} />
+          )}
+        </div>
+      </div>
       {character ? (
         <div className="single card">
           <CharacterCard
@@ -53,31 +62,24 @@ export const CharacterListPage = () => {
       )}
       {/* TODO: nav bar to custom components and unite theme */}
       <div className="nav-bar" style={{ color: currentTextColor, height: 80 }}>
-        <div
+        <span
           className="nav-item"
           style={{ fontWeight: server === "all" ? "bold" : "normal" }}
           onClick={() => onClickMenuItem("all")}
         >
           전체
-        </div>
+        </span>
         {getServerListFromData(data)?.map((item, idx) => (
-          <div
+          <span
             key={idx}
             className="nav-item"
             style={{ fontWeight: server === item ? "bold" : "normal" }}
             onClick={() => onClickMenuItem(item)}
           >
             {item}
-          </div>
+          </span>
         ))}
         <div className="space"></div>
-        <div className="nav-item">
-          {listMode ? (
-            <AppstoreOutlined onClick={() => setListMode(false)} />
-          ) : (
-            <UnorderedListOutlined onClick={() => setListMode(true)} />
-          )}
-        </div>
       </div>
       <List
         grid={{

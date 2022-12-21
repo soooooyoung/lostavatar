@@ -75,10 +75,8 @@ export const AppHeader = () => {
     const handleScroll = throttle(() => {
       if (window.scrollY > scrollTop && headerVisible) {
         setHeaderVisible(false);
-        console.log("down", window.scrollY, scrollTop);
       } else if (window.scrollY < scrollTop && !headerVisible) {
         setHeaderVisible(true);
-        console.log("up");
       }
       setScrollTop(window.scrollY);
     });
@@ -103,7 +101,7 @@ export const AppHeader = () => {
         style={{
           backgroundColor: currentTheme,
           color: currentText,
-          top: headerVisible ? 0 : -110,
+          top: headerVisible ? 0 : -170,
         }}
       >
         <div className="header-title" onClick={onClickBunny}>

@@ -32,10 +32,10 @@ export const CharacterCard = ({
           <span>
             ITEM LV <span className="itemLv">{character.ItemAvgLevel}</span>
           </span>
-          <span>
+          <span className="classLv">
             {character.CharacterClassName} LV {character.CharacterLevel}
           </span>
-          <span> {character.ServerName}</span>
+          <span className="server"> {character.ServerName}</span>
         </>
       )}
     </div>
