@@ -23,6 +23,10 @@
       border-radius: 14px;
       padding: 16px;
     }
+    .widget:hover {
+      transform: translate(0px, -6px);
+      transition-duration: 200ms;
+    }
   }
 
   .wrap-widget:first-child {
@@ -30,7 +34,8 @@
       position: sticky;
       position: -webkit-sticky;
       align-self: flex-start;
-      top: var(--header-height);
+      top: 16px;
+      // top: var(--header-height);
     }
   }
 }

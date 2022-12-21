@@ -1,6 +1,6 @@
 import { Header } from "antd/es/layout/layout";
 import { useNavigate } from "react-router-dom";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { SearchInput } from "../SearchInput";
 import {
   BgColorsOutlined,
@@ -12,7 +12,25 @@ import { Dropdown, MenuProps, Tooltip } from "antd";
 import { ColorPalettes } from "../../models";
 import { selectTextColor, selectTheme, setTheme } from "./appSlice";
 import { useSelector } from "react-redux";
-import { useObserver } from "../hooks/UseObserver";
+
+const throttle = (handler: (...args: any[]) => void, timeout = 300) => {
+  let invokedTime: number;
+  let timer: number;
+  return function (this: any, ...args: any[]) {
+    if (!invokedTime) {
+      handler.apply(this, args);
+      invokedTime = Date.now();
+    } else {
+      clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        if (Date.now() - invokedTime >= timeout) {
+          handler.apply(this, args);
+          invokedTime = Date.now();
+        }
+      }, Math.max(timeout - (Date.now() - invokedTime), 0));
+    }
+  };
+};
 
 export const AppHeader = () => {
   const navigate = useNavigate();
@@ -23,6 +41,7 @@ export const AppHeader = () => {
   const [menuVisible, setMenuVisible] = useState<"visible" | "hidden">(
     "hidden"
   );
+  const [scrollTop, setScrollTop] = useState<number>(0);
   const [headerVisible, setHeaderVisible] = useState<boolean>(true);
 
   const menuItems = [
@@ -52,13 +71,22 @@ export const AppHeader = () => {
     })
   );
 
-  const ref = useObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      setHeaderVisible(true);
-    } else {
-      setHeaderVisible(false);
-    }
-  });
+  useEffect(() => {
+    const handleScroll = throttle(() => {
+      if (window.scrollY > scrollTop && headerVisible) {
+        setHeaderVisible(false);
+        console.log("down", window.scrollY, scrollTop);
+      } else if (window.scrollY < scrollTop && !headerVisible) {
+        setHeaderVisible(true);
+        console.log("up");
+      }
+      setScrollTop(window.scrollY);
+    });
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollTop, setScrollTop, headerVisible, setHeaderVisible]);
 
   const onClickBunny = () => {
     navigate("/");
@@ -75,7 +103,7 @@ export const AppHeader = () => {
         style={{
           backgroundColor: currentTheme,
           color: currentText,
-          top: headerVisible ? 0 : -140,
+          top: headerVisible ? 0 : -110,
         }}
       >
         <div className="header-title" onClick={onClickBunny}>
@@ -110,26 +138,6 @@ export const AppHeader = () => {
           </Tooltip>
         </div>
       </div>
-      <div
-        className="stickyheader"
-        style={{
-          visibility: headerVisible ? "hidden" : "visible",
-          top: headerVisible ? 110 : 0,
-          backgroundColor: `${currentText}99`,
-        }}
-      >
-        {
-          <SearchInput
-            className="search"
-            onSearch={() => {
-              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-            }}
-            color={currentTheme}
-            style={{ display: headerVisible ? "none" : "flex" }}
-          />
-        }
-      </div>
-      <div ref={ref} />
     </Fragment>
   );
 };

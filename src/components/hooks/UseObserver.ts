@@ -10,6 +10,7 @@ export const useObserver = (
 
   const callback = useCallback(
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      // if (entries.find((item) => item.isIntersecting))
       onIntersect(entries, observer);
     },
     [onIntersect]
@@ -19,7 +20,7 @@ export const useObserver = (
     if (ref.current !== null) {
       const options = {
         root: null,
-        rootMargin: "-100px",
+        rootMargin: "0px",
         threshold: 1.0,
       };
 
