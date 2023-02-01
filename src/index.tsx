@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { store } from "./utils/app/store";
 import "./index.css";
+import "./style/common.scss";
 import App from "./App";
 
 const root = ReactDOM.createRoot(

@@ -1,0 +1,17 @@
+@import "./variables";
+
+.header {
+  z-index: 100;
+  display: flex;
+  position: sticky;
+  align-items: center;
+  justify-content: space-around;
+  gap: $gap;
+  padding: 0px 24px;
+  top: 0px;
+  width: 100%;
+  font-size: 2em;
+  span:hover {
+    cursor: pointer;
+  }
+}

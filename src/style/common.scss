@@ -1,0 +1,33 @@
+@import "./variables";
+
+.wrapper {
+  min-height: 100vh;
+  .app {
+    align-self: center;
+    max-width: $view;
+    padding: $gap;
+    .page {
+      margin: auto;
+      .section {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: $gap;
+        .widget {
+          background-color: #ffffff;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          max-width: 368px;
+          border-radius: $radius-medium;
+        }
+        .widget:hover {
+          transform: translate(0px, -6px);
+          transition-duration: 200ms;
+        }
+      }
+    }
+  }
+}
+
+.space {
+  flex-grow: 2;
+}

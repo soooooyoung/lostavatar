@@ -12,7 +12,7 @@ export const CharacterProfilePage = () => {
     {
       label: "기본 정보",
       key: "1",
-      children: <ChracterBaseProfile className="profile-content" data={data} />,
+      children: <>ff</>,
     },
     {
       label: "",
@@ -29,13 +29,14 @@ export const CharacterProfilePage = () => {
 
   return (
     <div className="character-profile">
-      <div className="character-title">
+      <ChracterBaseProfile className="profile-content" data={data} />
+      {/* <div className="character-title">
         {data?.Title}
         <h1>{data?.CharacterName}</h1>
-      </div>
+      </div> */}
       <Tabs
         className="character-tabs"
-        tabPosition="left"
+        tabPosition="top"
         style={{ color: "inherit" }}
         items={items}
       />

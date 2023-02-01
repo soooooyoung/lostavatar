@@ -5,7 +5,6 @@ import { AppHeader } from "./components/app/AppHeader";
 import { AppFooter } from "./components/app/AppFooter";
 import { Router } from "./components/app/Router";
 import { selectTextColor, selectTheme } from "./components/app/appSlice";
-import "./App.scss";
 
 function App() {
   const currentTheme = useSelector(selectTheme);
@@ -13,35 +12,27 @@ function App() {
   return (
     <ConfigProvider
       theme={{
-        // TODO: SET UP PRIMARY RELATIONS
         token: {
           colorPrimary: currentTheme === "#000000" ? "#ff5289" : "#345370",
         },
       }}
     >
-      <div
-        className="container"
+      <Layout
+        className="wrapper"
         style={{
           backgroundColor: currentTheme,
         }}
       >
-        <Layout
-          className="app"
+        <AppHeader />
+        <Content className="app">
+          <Router />
+        </Content>
+        <AppFooter
           style={{
-            backgroundColor: currentTheme,
+            color: useSelector(selectTextColor),
           }}
-        >
-          <AppHeader />
-          <Content className="app-content">
-            <Router />
-          </Content>
-          <AppFooter
-            style={{
-              color: useSelector(selectTextColor),
-            }}
-          />
-        </Layout>
-      </div>
+        />
+      </Layout>
     </ConfigProvider>
   );
 }
