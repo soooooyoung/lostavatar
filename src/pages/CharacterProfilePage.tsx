@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useFetchArmoryProfile } from "../api/armories";
 import { ChracterBaseProfile } from "../components/character/CharacterBaseProfile";
-import "./CharacterProfilePage.scss";
 
 export const CharacterProfilePage = () => {
   const { name } = useParams();
@@ -30,10 +29,6 @@ export const CharacterProfilePage = () => {
   return (
     <div className="character-profile">
       <ChracterBaseProfile className="profile-content" data={data} />
-      {/* <div className="character-title">
-        {data?.Title}
-        <h1>{data?.CharacterName}</h1>
-      </div> */}
       <Tabs
         className="character-tabs"
         tabPosition="top"

@@ -11,7 +11,7 @@ import {
   getDataListFromServer,
   getServerListFromData,
 } from "../utils/dataUtils";
-import "./CharacterListPage.scss";
+import "../style/CharacterListPage.scss";
 
 export const CharacterListPage = () => {
   const navigate = useNavigate();

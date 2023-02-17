@@ -9,6 +9,7 @@ export type {
   Tendency,
   Stat,
 } from "./data/armories";
+export type { NoticeList, Event } from "./data/news";
 /**
  * LOA API RESPONSE
  */

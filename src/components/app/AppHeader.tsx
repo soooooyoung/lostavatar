@@ -43,7 +43,9 @@ export const AppHeader = () => {
       }}
     >
       <div onClick={onClickBunny}>
-        <span style={{ color: currentText }}>LOSTAVATAR.GG</span>
+        <span className="logo" style={{ color: currentText }}>
+          LOSTAVATAR.GG
+        </span>
       </div>
       <SearchInput className="search" color={currentTheme} />
       <div className="space" />

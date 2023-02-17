@@ -1,33 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Nunito:wght@200;400;700;800;900;1000&family=Space+Grotesk:wght@400;700&display=swap");
+@import "./variables.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+span {
+  font-family: "Nunito";
+}
+
 @import "./variables";
 
 .wrapper {
   min-height: 100vh;
-  .app {
-    align-self: center;
-    max-width: $view;
-    padding: $gap;
-    .page {
-      margin: auto;
-      .section {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: $gap;
-        .widget {
-          background-color: #ffffff;
-          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-          max-width: 368px;
-          border-radius: $radius-medium;
-        }
-        .widget:hover {
-          transform: translate(0px, -6px);
-          transition-duration: 200ms;
-        }
-      }
-    }
+  .container {
+    max-width: 1440px;
+    margin: auto;
   }
 }
 
 .space {
   flex-grow: 2;
+}
+
+.list-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $gap;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
 }

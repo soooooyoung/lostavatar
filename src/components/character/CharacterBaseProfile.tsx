@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { ArmoryProfile, Tendency } from "../../models";
 import { selectTextColor, selectTheme } from "../app/appSlice";
 import { CharacterImage } from "./CharacterImage";
-import "./CharacterBaseProfile.scss";
+
 interface Props {
   className?: string;
   data?: ArmoryProfile;
@@ -24,15 +24,15 @@ export const ChracterBaseProfile = ({ className, data }: Props) => {
   };
   return (
     <div className={`base-container ${className}`}>
-      <div className="img-container">
+      <div>
         <CharacterImage characterClassName={data?.CharacterClassName} />
       </div>
-      <div className="basic-info">
-        <div className="character-name">
+      <div>
+        <div>
           <h1>{data?.CharacterName}</h1>
           <span>{data?.Title}</span>
         </div>
-        <div className="server-name">
+        <div>
           <span>서버</span> <span>{data?.ServerName}</span>
         </div>
       </div>

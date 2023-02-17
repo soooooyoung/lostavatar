@@ -24,7 +24,7 @@ function App() {
         }}
       >
         <AppHeader />
-        <Content className="app">
+        <Content className="container">
           <Router />
         </Content>
         <AppFooter
