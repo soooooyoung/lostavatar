@@ -1,0 +1,16 @@
+@import "./variables.scss";
+.character-profile {
+  background-color: #ffffff;
+  border-radius: $radius-medium;
+  padding: $gap;
+  .character-image {
+    img {
+      height: 600px;
+      width: 400px;
+      object-fit: cover;
+    }
+  }
+  .character-info {
+    min-width: 400px;
+  }
+}

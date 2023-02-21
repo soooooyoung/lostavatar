@@ -40,6 +40,12 @@ span {
   gap: $gap;
 }
 
+.list-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
 .card {
   display: flex;
   flex-direction: column;
